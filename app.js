@@ -212,22 +212,6 @@ function initHeroCarousel() {
     const dishes = container.querySelectorAll('.hero-dish-wrapper');
     if (dishes.length < 2) return;
 
-    // Helper to load lazy images (data-src to src)
-    const loadLazyImages = () => {
-        const lazyImages = container.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-        });
-    };
-
-    // Trigger lazy loading either on page load or immediately if ready
-    if (document.readyState === 'complete') {
-        loadLazyImages();
-    } else {
-        window.addEventListener('load', loadLazyImages);
-    }
-
     let currentIndex = 0; // index of the active centered dish
     let carouselInterval;
     let isHovered = false;
@@ -270,7 +254,6 @@ function initHeroCarousel() {
 
     // 1. Mouse Hover freeze
     container.addEventListener('mouseenter', () => {
-        loadLazyImages();
         isHovered = true;
         clearInterval(carouselInterval);
     });
@@ -297,7 +280,6 @@ function initHeroCarousel() {
 
     // Mouse events on container
     container.addEventListener('mousedown', (e) => {
-        loadLazyImages();
         // Prevent default text selection and browser image dragging actions
         e.preventDefault();
         isMouseDown = true;
@@ -349,7 +331,6 @@ function initHeroCarousel() {
     let isTouching = false;
 
     container.addEventListener('touchstart', (e) => {
-        loadLazyImages();
         isTouching = true;
         wasDragging = false;
         startX = e.touches[0].clientX;
