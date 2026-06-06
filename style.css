@@ -697,7 +697,7 @@ footer {
 /* Section Common Styling */
 .section {
     padding: var(--space-xl) 0;
-    max-width: 1200px;
+    max-width: 70vw;
     margin: 0 auto;
     padding-left: var(--space-md);
     padding-right: var(--space-md);
@@ -786,8 +786,17 @@ footer {
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border);
     transition: var(--transition-normal);
+    cursor: pointer;
 }
-
+.plate-card-tr {
+    background-color: var(--color-card-bg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-normal);
+    cursor: pointer;
+}
+.plate-card-tr:hover,
 .plate-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
@@ -799,6 +808,11 @@ footer {
     overflow: hidden;
     position: relative;
 }
+.plate-image-tr {
+    width: 100%;
+    height: 240px;
+    position: relative;
+}
 
 .plate-image img {
     width: 100%;
@@ -807,9 +821,22 @@ footer {
     transition: var(--transition-slow);
 }
 
+.plate-image-tr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: visible !important;
+    overflow-clip-margin: unset !important;
+    transition: var(--transition-slow);
+}
+
 .plate-card:hover .plate-image img {
     transform: scale(1.08);
 }
+.plate-card-tr:hover .plate-image-tr img {
+    transform: scale(1.05);
+}
+
 
 .plate-tag {
     position: absolute;
@@ -948,26 +975,33 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--space-md);
 }
-
+.menu-item-tr,
 .menu-item {
     background-color: var(--color-card-bg);
     border-radius: var(--border-radius-md);
     border: 1px solid var(--color-border);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-sm);
     transition: var(--transition-normal);
 }
 
+.menu-item-tr:hover,
 .menu-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) !important;
     box-shadow: var(--shadow-md);
+    cursor: pointer;
 }
 
 .menu-item-img {
     height: 200px;
     overflow: hidden;
+    position: relative;
+    background-color: #FAF6EE;
+}
+
+.menu-item-img-tr {
+    height: 200px;
     position: relative;
     background-color: #FAF6EE;
 }
@@ -979,9 +1013,23 @@ footer {
     transition: var(--transition-slow);
 }
 
-.menu-item:hover .menu-item-img img {
-    transform: scale(1.06);
+.menu-item-img-tr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: visible !important;
+    overflow-clip-margin: unset !important;
+    transition: var(--transition-slow);
 }
+
+.menu-item:hover img {
+    transform: scale(1.15);
+}
+
+.menu-item-tr:hover img {
+    transform: scale(1.1);
+}
+
 
 .menu-item-content {
     padding: var(--space-sm) var(--space-md) var(--space-md) var(--space-md);
