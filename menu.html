@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez le menu traditionnel de Coin Margoum à La Marsa. Couscous à l'agneau, Riz Djerbien à la vapeur, Ojja fumante, Brik croustillant, grillades au feu de bois et desserts typiques.">
+    <title>Notre Carte | Coin Margoum - Cuisine Tunisienne Authentique</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12 Z' fill='%23C0392B'/%3E%3C/svg%3E">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="navbar" id="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <div class="logo-diamond"></div>
+                Coin Margoum
+            </a>
+            
+            <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Menu principal">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html" id="link-home">Accueil</a></li>
+                    <li><a href="menu.html" class="active" id="link-menu">Notre Carte</a></li>
+                    <li><a href="about.html" id="link-about">L'Histoire & Contact</a></li>
+                    <li><a href="about.html#contact" class="btn btn-primary nav-cta" id="link-cta">Nous Trouver</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="margoum-border-top"></div>
+    </header>
+
+    <main>
+        <!-- Section Header -->
+        <section class="section" style="padding-bottom: 0;">
+            <div class="heading-container" style="margin-bottom: 2rem;">
+                <span class="heading-subtitle">Saveurs & Tradition</span>
+                <h1>Notre Carte</h1>
+                <div class="margoum-divider"></div>
+            </div>
+            
+            <div class="menu-intro">
+                <p>Tous nos plats sont cuisinés à la commande à partir de produits frais et locaux, relevés d'épices soigneusement sélectionnées et moulues artisanalement. Laissez-vous séduire par l'authenticité de notre terroir.</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="menu-filters" id="category-filters">
+                <button class="menu-filter-btn active" data-category="all">Tout voir</button>
+                <button class="menu-filter-btn" data-category="starters">Entrées & Salades</button>
+                <button class="menu-filter-btn" data-category="traditionnel">Plats Traditionnels</button>
+                <button class="menu-filter-btn" data-category="grillades">Grillades</button>
+                <button class="menu-filter-btn" data-category="desserts">Desserts & Thé</button>
+            </div>
+        </section>
+
+        <!-- Menu Grid Section -->
+        <section class="section" style="padding-top: 0; padding-bottom: var(--space-xl);">
+            <div class="menu-grid" id="menu-items-container">
+                
+                <!-- Item 1: Brik (Starters) -->
+                <div class="menu-item" data-category="starters" id="menu-brik">
+                    <div class="menu-item-img">
+                        <img src="assets/dish_brik.png" alt="Brik à l'oeuf tunisien croustillant">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Brik à l'Œuf & Thon</span>
+                            <span class="menu-item-price">6 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Feuille de malsouka croustillante garnie d'un œuf coulant, de thon de qualité, d'oignons émincés, de persil frais et de câpres, frite à la minute.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-lemon"></i> Servie avec citron</span>
+                            <span>Croustillant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Salade Mechouia (Starters) -->
+                <div class="menu-item" data-category="starters" id="menu-mechouia">
+                    <div class="menu-item-img">
+                        <!-- Default placeholder style since we don't have separate image, but we can display about_margoum or a textured card, let's keep it empty or styled with SVG layout -->
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-pepper-hot"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Salade Méchouia</span>
+                            <span class="menu-item-price">8 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Poivrons doux, tomates et ail grillés sur le charbon, concassés finement et assaisonnés d'huile d'olive extra-vierge, d'épices (tabel) et surmontés de thon.</p>
+                        <div class="menu-item-footer">
+                            <span style="color:var(--color-red-primary);"><i class="fa-solid fa-fire"></i> Relevé</span>
+                            <span>Entrée froide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Chorba (Starters) -->
+                <div class="menu-item" data-category="starters" id="menu-chorba">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-bowl-hot"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Chorba au Frik</span>
+                            <span class="menu-item-price">9 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Soupe traditionnelle tunisienne au blé vert concassé cuit dans un bouillon de tomates fraîches concentré, parfumé à la coriandre sauvage et au céleri.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-bowl-food"></i> Soupe chaude</span>
+                            <span>Au poulet/agneau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Couscous Royal (Traditionnel) -->
+                <div class="menu-item" data-category="traditionnel" id="menu-couscous">
+                    <div class="menu-item-img">
+                        <img src="assets/dish_couscous.png" alt="Couscous Royal à l'agneau de Coin Margoum">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Couscous à l'Agneau</span>
+                            <span class="menu-item-price">28 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Semoule de blé fine cuite à la vapeur au-dessus d'un bouillon aromatique, garnie de morceaux d'agneau fondants, de carottes, de courges et de pois chiches.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-award"></i> Signature</span>
+                            <span>Pour les gourmets</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Riz Djerbien (Traditionnel) -->
+                <div class="menu-item" data-category="traditionnel" id="menu-riz">
+                    <div class="menu-item-img">
+                        <img src="assets/dish_riz_djerbien.png" alt="Riz Djerbi traditionnel tunisien">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Riz Djerbien au Poulet</span>
+                            <span class="menu-item-price">22 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Riz à grains fins cuit à la vapeur, mélangé intimement avec du poulet mariné en dés, des blettes, du persil, des carottes et des épices orientales traditionnelles.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-carrot"></i> Fait maison</span>
+                            <span>Cuit vapeur</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Ojja Merguez (Traditionnel) -->
+                <div class="menu-item" data-category="traditionnel" id="menu-ojja">
+                    <div class="menu-item-img">
+                        <img src="assets/dish_ojja.png" alt="Ojja royale aux oeufs et merguez">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Ojja Tunisienne aux Merguez</span>
+                            <span class="menu-item-price">18 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Ragoût mijoté de sauce tomate fraîche, piments verts piquants, harissa locale et épices, garni de merguez artisanales grillées et d'œufs pochés coulants.</p>
+                        <div class="menu-item-footer">
+                            <span style="color:var(--color-red-primary);"><i class="fa-solid fa-fire"></i><i class="fa-solid fa-fire"></i> Très relevé</span>
+                            <span>Mijoté minute</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Kamounia (Traditionnel) -->
+                <div class="menu-item" data-category="traditionnel" id="menu-kamounia">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-leaf"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Kamounia d'Agneau</span>
+                            <span class="menu-item-price">24 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Plat traditionnel tunisien cuit dans une sauce tomate réduite très parfumée, à base de morceaux de viande d'agneau et de foie, relevée généreusement au cumin.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-mortar-pestle"></i> Parfumé au cumin</span>
+                            <span>Sauce onctueuse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Grillade Mixte (Grillades) -->
+                <div class="menu-item" data-category="grillades" id="menu-grillademixte">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-fire-burner"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Assiette de Grillade Mixte</span>
+                            <span class="menu-item-price">32 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Un assortiment royal de nos viandes grillées au charbon de bois : une côtelette d'agneau, une brochette de poulet marinée et une merguez. Servi avec frites et salades.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-drumstick-bite"></i> Assortiment</span>
+                            <span>Cuit au charbon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 9: Cotelettes d'agneau (Grillades) -->
+                <div class="menu-item" data-category="grillades" id="menu-cotelettes">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-fire"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Côtelettes d'Agneau</span>
+                            <span class="menu-item-price">30 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Quatre côtelettes d'agneau locales juteuses, marinées avec du romarin sauvage et de l'origan frais, grillées à la perfection. Servies avec frites maison croustillantes.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-ribbon"></i> Tendre</span>
+                            <span>Assaisonné minute</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 10: Brochettes Poulet (Grillades) -->
+                <div class="menu-item" data-category="grillades" id="menu-brochettes">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-kitchen-set"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Brochettes de Poulet</span>
+                            <span class="menu-item-price">20 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Dés de blancs de poulet tendres marinés dans du jus de citron frais, de l'huile d'olive, du curcuma et des herbes aromatiques, puis passés sur le grill.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-circle-info"></i> Léger</span>
+                            <span>Mariné 12 heures</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 11: Bambalouni (Desserts) -->
+                <div class="menu-item" data-category="desserts" id="menu-bambalouni">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-cookie"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Bambalouni Tunisien</span>
+                            <span class="menu-item-price">4 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Le beignet emblématique tunisien frit sous vos yeux, saupoudré de sucre en poudre fin ou arrosé d'un délicieux miel sauvage doré. Chaud et croustillant.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-hot-tub-person"></i> Servi chaud</span>
+                            <span>Moelleux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 12: Thé Menthe (Desserts) -->
+                <div class="menu-item" data-category="desserts" id="menu-the">
+                    <div class="menu-item-img">
+                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#FAF6EE; color:var(--color-red-primary); font-size:3rem;"><i class="fa-solid fa-mug-hot"></i></div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Thé à la Menthe aux Pignons</span>
+                            <span class="menu-item-price">5 DT</span>
+                        </div>
+                        <p class="menu-item-desc">Thé vert fort et sucré infusé longuement avec des feuilles de menthe fraîche, surmonté généreusement de pignons de pin tunisiens torréfiés et croquants.</p>
+                        <div class="menu-item-footer">
+                            <span><i class="fa-solid fa-mug-sparkles"></i> Un classique</span>
+                            <span>Détente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AND MANY MORE BOX -->
+                <div class="menu-more-box" id="menu-more-placeholder">
+                    <i class="fa-solid fa-ellipsis" style="font-size: 2.5rem; color: var(--color-red-primary); margin-bottom: 1rem;"></i>
+                    <h3>...Et bien d'autres délices du jour !</h3>
+                    <p>Notre carte s'enrichit quotidiennement en fonction des arrivages de la criée et du marché. Venez déguster nos plats du jour tels que le <strong>Tajine tunisien</strong>, le <strong>Kafteji fait maison</strong>, les <strong>Macaronis à l'Agneau (Bel Allouch)</strong>, ou encore nos <strong>poissons grillés</strong> selon arrivage.</p>
+                    <p style="margin-top: 1rem; font-weight: 600; color: var(--color-green-accent);">N'hésitez pas à appeler ou interroger notre équipe pour connaître le menu du jour !</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <!-- Col 1 -->
+            <div class="footer-col" id="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-diamond"></div>
+                    Coin Margoum
+                </div>
+                <p>Votre adresse gourmande de cuisine traditionnelle tunisienne à La Marsa. Un goût authentique tissé d'histoire et de passion.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/stories/highlights/17937594273190256/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tripadvisor.fr/Restaurant_Review-g297946-d32889949-Reviews-Coin_Margoum-La_Marsa_Tunis_Governorate.html" target="_blank" aria-label="TripAdvisor"><i class="fa-solid fa-plane-departure"></i></a>
+                    <a href="https://www.google.com/maps/place/Coin+Margoum/data=!4m7!3m6!1s0x12e2b5003e808051:0xf9a4d37cafb55d91!8m2!3d36.8837142!4d10.331708!16s%2Fg%2F11x7y9v_qn!19sChIJUYCAPgC14hIRkV21r3zTpPk?authuser=0&hl=en&rclk=1" target="_blank" aria-label="Google Maps"><i class="fa-solid fa-map-location"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col" id="footer-hours">
+                <h3>Horaires d'Ouverture</h3>
+                <p><strong>Mardi - Dimanche :</strong> 12h00 - 23h00</p>
+                <p><strong>Lundi :</strong> Fermé (Repos hebdomadaire)</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-gold);"><i class="fa-solid fa-clock"></i> Service Continu</p>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col" id="footer-contact">
+                <h3>Contact & Accès</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 11 Rue Mongi Slim, La Marsa, Tunisie</p>
+                <p><i class="fa-solid fa-phone"></i> +216 50 335 898</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@coinmargoum.tn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Coin Margoum. Tous droits réservés. Conçu pour le plaisir des gourmets.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

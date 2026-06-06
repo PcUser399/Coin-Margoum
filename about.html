@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'histoire de Coin Margoum à La Marsa et nos coordonnées de contact. Venez déguster nos plats de couscous, ojja, et riz djerbien dans un décor traditionnel.">
+    <title>Notre Histoire & Contact | Coin Margoum - Restaurant La Marsa</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12 Z' fill='%23C0392B'/%3E%3C/svg%3E">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="navbar" id="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <div class="logo-diamond"></div>
+                Coin Margoum
+            </a>
+            
+            <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Menu principal">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html" id="link-home">Accueil</a></li>
+                    <li><a href="menu.html" id="link-menu">Notre Carte</a></li>
+                    <li><a href="about.html" class="active" id="link-about">L'Histoire & Contact</a></li>
+                    <li><a href="about.html#contact" class="btn btn-primary nav-cta" id="link-cta">Nous Trouver</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="margoum-border-top"></div>
+    </header>
+
+    <main>
+        <!-- About Story Section -->
+        <section class="section" style="padding-top: var(--space-xl);">
+            <div class="about-hero">
+                <div class="about-hero-img">
+                    <img src="assets/about_margoum.png" alt="Détail tissage Margoum tunisien">
+                </div>
+                <div class="about-hero-content">
+                    <span class="heading-subtitle">Origines & Philosophie</span>
+                    <h1>L'Art du Tissage et des Saveurs</h1>
+                    <div class="margoum-divider" style="margin-left: 0; margin-right: 0;"></div>
+                    <p>Le restaurant <strong>Coin Margoum</strong> est né d'une passion partagée pour les recettes familiales de la cuisine traditionnelle tunisienne et pour l'art de l'hospitalité chaleureuse.</p>
+                    <p>Notre nom rend hommage au <strong>Margoum</strong>, un tapis traditionnel de laine cardée, tissé à la main, dont les formes géométriques en losange ornent nos murs et nos banquettes. Tout comme la tisserande croise les fils pour former des motifs complexes, notre chef croise et associe les épices pour révéler la richesse aromatique du couscous tunisien, de l'ojja, ou du fameux riz djerbien cuit lentement à la vapeur.</p>
+                    <p>Nous vous accueillons en famille ou entre amis à La Marsa, pour un moment de partage simple et gourmand dans une ambiance lumineuse et authentique.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Maps Section -->
+        <section class="section section-alt" id="contact" style="scroll-margin-top: 100px;">
+            <div class="section">
+                <div class="heading-container">
+                    <span class="heading-subtitle">Nous localiser</span>
+                    <h2>Contact & Accès</h2>
+                    <div class="margoum-divider"></div>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Left: Info Panel -->
+                    <div class="contact-info-panel">
+                        <!-- Card 1: Address -->
+                        <div class="contact-card" id="contact-addr-card">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Notre Adresse</h3>
+                                <p>11 Rue Mongi Slim, La Marsa 2076, Tunisie</p>
+                                <p style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--color-text-muted);">Quartier chaleureux et facile d'accès.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Phone -->
+                        <div class="contact-card" id="contact-phone-card">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Téléphone & Commandes</h3>
+                                <p><a href="tel:+21650335898" style="font-weight: 700; color: var(--color-red-primary);">+216 50 335 898</a></p>
+                                <p style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--color-text-muted);">Appelez-nous pour commander à emporter.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Hours -->
+                        <div class="contact-card" id="contact-hours-card">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Horaires d'Ouverture</h3>
+                                <p>Mardi au Dimanche : 12h00 - 23h00</p>
+                                <p>Lundi : Fermé (Repos hebdomadaire)</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Socials -->
+                        <div class="contact-card" id="contact-social-card">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Réseaux Sociaux & Avis</h3>
+                                <p style="display: flex; gap: 1rem; margin-top: 0.3rem;">
+                                    <a href="https://www.instagram.com/stories/highlights/17937594273190256/" target="_blank" style="color: var(--color-red-primary); font-weight: 600;"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                                    <a href="https://www.tripadvisor.fr/Restaurant_Review-g297946-d32889949-Reviews-Coin_Margoum-La_Marsa_Tunis_Governorate.html" target="_blank" style="color: var(--color-green-accent); font-weight: 600;"><i class="fa-solid fa-plane-departure"></i> TripAdvisor</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Google Maps Widget -->
+                    <div class="map-widget" id="maps-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.1354050868846!2d10.329133076412192!3d36.883714199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b5003e808051%3A0xf9a4d37cafb55d91!2sCoin%20Margoum!5e0!3m2!1sfr!2stn!4v1717665249567!5m2!1sfr!2stn" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div class="map-cta-overlay">
+                            <a href="https://www.google.com/maps/place/Coin+Margoum/data=!4m7!3m6!1s0x12e2b5003e808051:0xf9a4d37cafb55d91!8m2!3d36.8837142!4d10.331708!16s%2Fg%2F11x7y9v_qn!19sChIJUYCAPgC14hIRkV21r3zTpPk?authuser=0&hl=en&rclk=1" target="_blank">
+                                <i class="fa-solid fa-map-pin"></i> Ouvrir dans Google Maps pour itinéraire direct
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section gallery-showcase" id="gallery">
+            <div class="heading-container">
+                <span class="heading-subtitle">En Images</span>
+                <h2>Galerie de Coin Margoum</h2>
+                <div class="margoum-divider"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Img 1 -->
+                <div class="gallery-item" id="gal-1">
+                    <img src="assets/hero_interior.png" alt="Intérieur du restaurant avec banquettes Margoum">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <!-- Img 2 -->
+                <div class="gallery-item" id="gal-2">
+                    <img src="assets/dish_couscous.png" alt="Plat traditionnel de Couscous tunisien">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <!-- Img 3 -->
+                <div class="gallery-item" id="gal-3">
+                    <img src="assets/dish_riz_djerbien.png" alt="Riz djerbien cuit vapeur de Coin Margoum">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <!-- Img 4 -->
+                <div class="gallery-item" id="gal-4">
+                    <img src="assets/dish_ojja.png" alt="Ojja fumante tunisienne">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <!-- Img 5 -->
+                <div class="gallery-item" id="gal-5">
+                    <img src="assets/dish_brik.png" alt="Brik à l'oeuf croustillant tunisien">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <!-- Img 6 -->
+                <div class="gallery-item" id="gal-6">
+                    <img src="assets/about_margoum.png" alt="Détail du motif tissé Margoum">
+                    <div class="gallery-item-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Overlay for Gallery -->
+    <div class="lightbox" id="gallery-lightbox" aria-label="Agrandissement photo">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close-btn" aria-label="Fermer la vue">&times;</button>
+            <img src="" id="lightbox-img" alt="Photo agrandie">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <!-- Col 1 -->
+            <div class="footer-col" id="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-diamond"></div>
+                    Coin Margoum
+                </div>
+                <p>Votre adresse gourmande de cuisine traditionnelle tunisienne à La Marsa. Un goût authentique tissé d'histoire et de passion.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/stories/highlights/17937594273190256/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tripadvisor.fr/Restaurant_Review-g297946-d32889949-Reviews-Coin_Margoum-La_Marsa_Tunis_Governorate.html" target="_blank" aria-label="TripAdvisor"><i class="fa-solid fa-plane-departure"></i></a>
+                    <a href="https://www.google.com/maps/place/Coin+Margoum/data=!4m7!3m6!1s0x12e2b5003e808051:0xf9a4d37cafb55d91!8m2!3d36.8837142!4d10.331708!16s%2Fg%2F11x7y9v_qn!19sChIJUYCAPgC14hIRkV21r3zTpPk?authuser=0&hl=en&rclk=1" target="_blank" aria-label="Google Maps"><i class="fa-solid fa-map-location"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col" id="footer-hours">
+                <h3>Horaires d'Ouverture</h3>
+                <p><strong>Mardi - Dimanche :</strong> 12h00 - 23h00</p>
+                <p><strong>Lundi :</strong> Fermé (Repos hebdomadaire)</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-gold);"><i class="fa-solid fa-clock"></i> Service Continu</p>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col" id="footer-contact">
+                <h3>Contact & Accès</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 11 Rue Mongi Slim, La Marsa, Tunisie</p>
+                <p><i class="fa-solid fa-phone"></i> +216 50 335 898</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@coinmargoum.tn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Coin Margoum. Tous droits réservés. Conçu pour le plaisir des gourmets.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coin Margoum - Restaurant traditionnel tunisien à La Marsa, Tunis. Découvrez nos spécialités culinaires : Couscous, Riz Djerbien, Ojja, et Brik dans une ambiance chaleureuse et authentique.">
+    <title>Coin Margoum | Restaurant Tunisien Traditionnel à La Marsa</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12 Z' fill='%23C0392B'/%3E%3C/svg%3E">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="navbar" id="main-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <div class="logo-diamond"></div>
+                Coin Margoum
+            </a>
+            
+            <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Menu principal">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html" class="active" id="link-home">Accueil</a></li>
+                    <li><a href="menu.html" id="link-menu">Notre Carte</a></li>
+                    <li><a href="about.html" id="link-about">L'Histoire & Contact</a></li>
+                    <li><a href="about.html#contact" class="btn btn-primary nav-cta" id="link-cta">Nous Trouver</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="margoum-border-top"></div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <i class="fa-solid fa-utensils"></i> Cuisine Tunisienne Authentique
+                    </div>
+                    <h1>Saveurs de Notre Terroir</h1>
+                    <p>Niché au cœur de La Marsa, <strong>Coin Margoum</strong> vous invite à un voyage gustatif inoubliable. Savourez nos plats traditionnels mijotés avec amour dans un cadre chaleureux inspiré de l'artisanat tunisien.</p>
+                    <div class="hero-actions">
+                        <a href="menu.html" class="btn btn-primary" id="hero-btn-menu">
+                            <i class="fa-solid fa-book-open"></i> Découvrir la Carte
+                        </a>
+                        <a href="about.html#contact" class="btn btn-secondary" id="hero-btn-contact">
+                            <i class="fa-solid fa-map-location-dot"></i> Nous Rendre Visite
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-frame">
+                        <img src="assets/hero_interior.png" alt="Intérieur chaleureux du restaurant Coin Margoum">
+                        <div class="hero-badge">
+                            <span>4.8</span>
+                            <label><i class="fa-solid fa-star text-gold"></i> Note Avis</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="features-section">
+            <div class="heading-container">
+                <span class="heading-subtitle">Ce qui nous définit</span>
+                <h2>Une Expérience Authentique</h2>
+                <div class="margoum-divider"></div>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card" id="feat-ingredients">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3>Produits Frais</h3>
+                    <p>Tous nos ingrédients sont sélectionnés chaque matin au marché local pour garantir la fraîcheur et la qualité de nos mets.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card" id="feat-heritage">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+                    <h3>Recettes Secrètes</h3>
+                    <p>Nos plats sont préparés selon des recettes familiales transmises de génération en génération, avec le juste dosage d'épices.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card" id="feat-ambiance">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3>Cadre Margoum</h3>
+                    <p>Une décoration soignée mettant en valeur le Margoum, tapis tissé traditionnel, créant un espace convivial et intime.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Plates Section -->
+        <section class="section section-alt" id="featured-plates-section">
+            <div class="section">
+                <div class="heading-container">
+                    <span class="heading-subtitle">Le choix du chef</span>
+                    <h2>Nos Plats Signature</h2>
+                    <div class="margoum-divider"></div>
+                </div>
+
+                <div class="plates-grid">
+                    <!-- Plate 1: Couscous -->
+                    <div class="plate-card" id="plate-couscous">
+                        <div class="plate-image">
+                            <img src="assets/dish_couscous.png" alt="Couscous Royal traditionnel de Coin Margoum">
+                            <span class="plate-tag">Populaire</span>
+                        </div>
+                        <div class="plate-info">
+                            <div class="plate-header">
+                                <h3>Couscous Royal</h3>
+                                <span class="plate-price">28 DT</span>
+                            </div>
+                            <p class="plate-desc">Semoule fine cuite à la vapeur d'un bouillon parfumé, servie avec de la viande d'agneau tendre, des pois chiches et des légumes frais de saison.</p>
+                            <div class="plate-meta">
+                                <span class="plate-spicy"><i class="fa-solid fa-fire"></i> Épicé doux</span>
+                                <span><i class="fa-solid fa-heart"></i> Spécialité</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plate 2: Riz Djerbien -->
+                    <div class="plate-card" id="plate-riz">
+                        <div class="plate-image">
+                            <img src="assets/dish_riz_djerbien.png" alt="Riz Djerbien traditionnel cuit à la vapeur">
+                            <span class="plate-tag">Traditionnel</span>
+                        </div>
+                        <div class="plate-info">
+                            <div class="plate-header">
+                                <h3>Riz Djerbien</h3>
+                                <span class="plate-price">22 DT</span>
+                            </div>
+                            <p class="plate-desc">Riz cuit lentement à la vapeur d'eau aromatique, mélangé avec des morceaux de poulet mariné, des épinards, des blettes fraîches et des épices traditionnelles.</p>
+                            <div class="plate-meta">
+                                <span><i class="fa-solid fa-carrot"></i> Riche en herbes</span>
+                                <span><i class="fa-solid fa-award"></i> Authentique</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plate 3: Ojja -->
+                    <div class="plate-card" id="plate-ojja">
+                        <div class="plate-image">
+                            <img src="assets/dish_ojja.png" alt="Ojja tunisienne aux oeufs et merguez">
+                            <span class="plate-tag">Incontournable</span>
+                        </div>
+                        <div class="plate-info">
+                            <div class="plate-header">
+                                <h3>Ojja aux Merguez</h3>
+                                <span class="plate-price">18 DT</span>
+                            </div>
+                            <p class="plate-desc">Une sauce tomate onctueuse et relevée à la harissa, mijotée avec des poivrons verts, surmontée d'œufs pochés coulants et de saucisses merguez grillées.</p>
+                            <div class="plate-meta">
+                                <span class="plate-spicy"><i class="fa-solid fa-fire"></i><i class="fa-solid fa-fire"></i> Très épicé</span>
+                                <span><i class="fa-solid fa-egg"></i> Cuit au pilon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="menu.html" class="btn btn-outline" id="btn-see-full-menu">Voir l'ensemble du menu</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Teaser Section -->
+        <section class="section" id="about-teaser-section">
+            <div class="about-hero">
+                <div class="about-hero-img">
+                    <img src="assets/about_margoum.png" alt="Détail d'un tapis traditionnel Margoum tunisien">
+                </div>
+                <div class="about-hero-content">
+                    <span class="heading-subtitle">Notre Identité</span>
+                    <h2>Pourquoi le "Margoum" ?</h2>
+                    <p>Le <strong>Margoum</strong> est plus qu'un simple tapis tunisien ; c'est une œuvre d'art tissée à la main, où chaque motif géométrique en diamant raconte une histoire, symbolise une région, et exprime une émotion.</p>
+                    <p>Dans notre restaurant, nous appliquons cette même philosophie à notre cuisine. Chaque plat que nous servons est tissé d'ingrédients de qualité, d'épices soigneusement choisies et de techniques de cuisson lente pour créer une harmonie parfaite de saveurs et de couleurs.</p>
+                    <a href="about.html" class="btn btn-secondary" style="margin-top: 1rem;" id="btn-read-history">En savoir plus sur notre histoire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section section-alt" id="testimonials-section">
+            <div class="section">
+                <div class="heading-container">
+                    <span class="heading-subtitle">Vos retours</span>
+                    <h2>Ce que disent nos clients</h2>
+                    <div class="margoum-divider"></div>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="feature-card" style="text-align: left;" id="testi-1">
+                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"Une adresse incroyable à La Marsa ! Le riz djerbien est tout simplement le meilleur que j'ai mangé dans un restaurant. Le service est familial et très attentionné. La déco avec les tapis margoum donne un cachet fou."</p>
+                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Mehdi K. (TripAdvisor)</h4>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="feature-card" style="text-align: left;" id="testi-2">
+                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"L'ojja est d'une fraîcheur absolue et le brik est croustillant à souhait avec un jaune d'œuf coulant parfait. Coin très chaleureux, propre et prix très corrects pour La Marsa."</p>
+                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Sarah G. (Google Reviews)</h4>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="feature-card" style="text-align: left;" id="testi-3">
+                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"Un petit resto familial sans chichis qui propose de la vraie cuisine tunisienne comme chez la maman. Le thé à la menthe aux pignons offert à la fin est une délicieuse attention !"</p>
+                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Lucas M. (TripAdvisor)</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Promo Box -->
+        <section class="cta-promo" id="cta-advertisement-box">
+            <h2>Une Envie de Voyage Culinaire ?</h2>
+            <p>Venez nous rendre visite à La Marsa pour déguster nos spécialités authentiques faites maison. Vous pouvez également commander vos plats à emporter.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:+21650335898" class="btn btn-primary" id="cta-btn-call">
+                    <i class="fa-solid fa-phone"></i> Appeler (+216 50 335 898)
+                </a>
+                <a href="about.html#contact" class="btn btn-secondary" style="background-color: transparent; border-color: #FFFFFF; color: #FFFFFF;" id="cta-btn-route">
+                    <i class="fa-solid fa-location-arrow"></i> Itinéraire Google Maps
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <!-- Col 1 -->
+            <div class="footer-col" id="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-diamond"></div>
+                    Coin Margoum
+                </div>
+                <p>Votre adresse gourmande de cuisine traditionnelle tunisienne à La Marsa. Un goût authentique tissé d'histoire et de passion.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/stories/highlights/17937594273190256/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tripadvisor.fr/Restaurant_Review-g297946-d32889949-Reviews-Coin_Margoum-La_Marsa_Tunis_Governorate.html" target="_blank" aria-label="TripAdvisor"><i class="fa-solid fa-plane-departure"></i></a>
+                    <a href="https://www.google.com/maps/place/Coin+Margoum/data=!4m7!3m6!1s0x12e2b5003e808051:0xf9a4d37cafb55d91!8m2!3d36.8837142!4d10.331708!16s%2Fg%2F11x7y9v_qn!19sChIJUYCAPgC14hIRkV21r3zTpPk?authuser=0&hl=en&rclk=1" target="_blank" aria-label="Google Maps"><i class="fa-solid fa-map-location"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col" id="footer-hours">
+                <h3>Horaires d'Ouverture</h3>
+                <p><strong>Mardi - Dimanche :</strong> 12h00 - 23h00</p>
+                <p><strong>Lundi :</strong> Fermé (Repos hebdomadaire)</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-gold);"><i class="fa-solid fa-clock"></i> Service Continu</p>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col" id="footer-contact">
+                <h3>Contact & Accès</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 11 Rue Mongi Slim, La Marsa, Tunisie</p>
+                <p><i class="fa-solid fa-phone"></i> +216 50 335 898</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@coinmargoum.tn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Coin Margoum. Tous droits réservés. Conçu pour le plaisir des gourmets.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
