@@ -280,12 +280,12 @@ function initHeroCarousel() {
 
     // 2. Click/Drag navigation & interaction mapping
     const dishLinks = {
-        0: { id: 'menu-couscous-poisson', menu: 'menu.html#menu-couscous-poisson' }, // Couscous au Poisson
-        1: { id: 'menu-couscous',         menu: 'menu.html#menu-couscous'         }, // Couscous à l'Agneau
-        2: { id: 'menu-ojja',             menu: 'menu.html#menu-ojja'             }, // Ojja Merguez
-        3: { id: 'menu-poisson-grille',   menu: 'menu.html#menu-poisson-grille'   }, // Poisson Grillé
-        4: { id: 'menu-chakchouka',       menu: 'menu.html#menu-chakchouka'       }, // Chakchouka
-        5: { id: 'menu-lablabi',          menu: 'menu.html#menu-lablabi'          }  // Lablabi
+        0: { id: 'menu-couscous-poisson', menu: 'menu.html?dish=menu-couscous-poisson' }, // Couscous au Poisson
+        1: { id: 'menu-couscous',         menu: 'menu.html?dish=menu-couscous'         }, // Couscous à l'Agneau
+        2: { id: 'menu-ojja',             menu: 'menu.html?dish=menu-ojja'             }, // Ojja Merguez
+        3: { id: 'menu-poisson-grille',   menu: 'menu.html?dish=menu-poisson-grille'   }, // Poisson Grillé
+        4: { id: 'menu-chakchouka',       menu: 'menu.html?dish=menu-chakchouka'       }, // Chakchouka
+        5: { id: 'menu-lablabi',          menu: 'menu.html?dish=menu-lablabi'          }  // Lablabi
     };
 
     let startX = 0;
@@ -431,11 +431,18 @@ function initHeroCarousel() {
     });
 }
 
-// Check URL hash on page load to focus and glow targeted menu items
+// Check URL query parameters or hash on page load to focus and glow targeted menu items
 window.addEventListener('load', () => {
-    const hash = window.location.hash;
-    if (hash) {
-        const target = document.querySelector(hash);
+    const urlParams = new URLSearchParams(window.location.search);
+    let targetId = urlParams.get('dish');
+    
+    // Fallback to hash if query param not found
+    if (!targetId && window.location.hash) {
+        targetId = window.location.hash.substring(1);
+    }
+    
+    if (targetId) {
+        const target = document.getElementById(targetId);
         if (target) {
             setTimeout(() => {
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -443,7 +450,7 @@ window.addEventListener('load', () => {
                 setTimeout(() => {
                     target.classList.remove('dish-glow');
                 }, 2100);
-            }, 400);
+            }, 100);
         }
     }
 });
