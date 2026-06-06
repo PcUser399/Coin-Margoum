@@ -209,6 +209,21 @@ function initHeroCarousel() {
     const container = document.getElementById('hero-dishes-carousel');
     if (!container) return;
 
+    // Defer loading of remaining dish images until page loads completely
+    const lazyLoadRemainingDishes = () => {
+        const lazyImages = container.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+        });
+    };
+
+    if (document.readyState === 'complete') {
+        lazyLoadRemainingDishes();
+    } else {
+        window.addEventListener('load', lazyLoadRemainingDishes);
+    }
+
     const dishes = container.querySelectorAll('.hero-dish-wrapper');
     if (dishes.length < 2) return;
 
