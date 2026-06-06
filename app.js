@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('gallery-lightbox')) {
         initLightbox();
     }
+
+    // Init custom hero dishes carousel
+    initHeroCarousel();
 });
 
 /**
@@ -55,17 +58,35 @@ function initMobileNav() {
  */
 function initScrollNavbar() {
     const navbar = document.getElementById('main-navbar');
+    const hero = document.getElementById('hero-section');
     if (!navbar) return;
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = 'var(--shadow-md)';
-            navbar.style.backgroundColor = 'rgba(253, 251, 247, 0.98)';
-        } else {
-            navbar.style.boxShadow = 'none';
-            navbar.style.backgroundColor = 'rgba(253, 251, 247, 0.95)';
-        }
-    });
+    if (hero) {
+        // Start transparent on pages with a hero section
+        navbar.classList.add('navbar-transparent');
+
+        const checkScroll = () => {
+            const heroHeight = hero.offsetHeight - navbar.offsetHeight;
+            const scrollY = window.scrollY;
+
+            // Reset navbar classes
+            navbar.classList.remove('navbar-transparent', 'navbar-dark-overlay', 'navbar-scrolled');
+
+            if (scrollY > heroHeight) {
+                navbar.classList.add('navbar-scrolled');
+            } else if (scrollY > 75) {
+                navbar.classList.add('navbar-dark-overlay');
+            } else {
+                navbar.classList.add('navbar-transparent');
+            }
+        };
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Set correct state on load
+    } else {
+        // Solid header on pages without a hero section
+        navbar.classList.add('navbar-scrolled');
+    }
 }
 
 /**
@@ -180,3 +201,234 @@ function initLightbox() {
         }, 300);
     }
 }
+
+/**
+ * Swapping, floating, and interactive Tunisian dishes carousel inside the hero section
+ */
+function initHeroCarousel() {
+    const container = document.getElementById('hero-dishes-carousel');
+    if (!container) return;
+
+    const dishes = container.querySelectorAll('.hero-dish-wrapper');
+    if (dishes.length < 2) return;
+
+    let currentIndex = 0; // index of the active centered dish
+    let carouselInterval;
+    let isHovered = false;
+
+    // Center index update handler
+    const updateCarousel = (centerIdx) => {
+        dishes.forEach((dish, idx) => {
+            dish.classList.remove('dish-active', 'dish-next', 'dish-prev', 'dish-hidden');
+            if (idx === centerIdx) {
+                // Centered active floating dish
+                dish.classList.add('dish-active');
+            } else if (idx === (centerIdx + 1) % dishes.length) {
+                // Bottom-right preview dish (next)
+                dish.classList.add('dish-next');
+            } else if (idx === (centerIdx - 1 + dishes.length) % dishes.length) {
+                // Top-right preview dish (prev)
+                dish.classList.add('dish-prev');
+            } else {
+                // Hidden queue dish
+                dish.classList.add('dish-hidden');
+            }
+        });
+    };
+
+    // Initialize layout positions
+    updateCarousel(currentIndex);
+
+    const rotateCarousel = () => {
+        if (isHovered) return; // Freeze animation on hover
+        currentIndex = (currentIndex + 1) % dishes.length;
+        updateCarousel(currentIndex);
+    };
+
+    const startInterval = () => {
+        clearInterval(carouselInterval);
+        carouselInterval = setInterval(rotateCarousel, 3500);
+    };
+
+    startInterval();
+
+    // 1. Mouse Hover freeze
+    container.addEventListener('mouseenter', () => {
+        isHovered = true;
+        clearInterval(carouselInterval);
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isHovered = false;
+        startInterval();
+    });
+
+    // 2. Click/Drag navigation & interaction mapping
+    const dishLinks = {
+        0: { id: 'menu-couscous-poisson', menu: 'menu.html#menu-couscous-poisson' }, // Couscous au Poisson
+        1: { id: 'menu-couscous',         menu: 'menu.html#menu-couscous'         }, // Couscous à l'Agneau
+        2: { id: 'menu-ojja',             menu: 'menu.html#menu-ojja'             }, // Ojja Merguez
+        3: { id: 'menu-poisson-grille',   menu: 'menu.html#menu-poisson-grille'   }, // Poisson Grillé
+        4: { id: 'menu-chakchouka',       menu: 'menu.html#menu-chakchouka'       }, // Chakchouka
+        5: { id: 'menu-lablabi',          menu: 'menu.html#menu-lablabi'          }  // Lablabi
+    };
+
+    let startX = 0;
+    let startY = 0;
+    let isMouseDown = false;
+    let wasDragging = false;
+
+    // Mouse events on container
+    container.addEventListener('mousedown', (e) => {
+        // Prevent default text selection and browser image dragging actions
+        e.preventDefault();
+        isMouseDown = true;
+        wasDragging = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        // Break interval on interaction start
+        clearInterval(carouselInterval);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        const diffX = e.clientX - startX;
+        const diffY = e.clientY - startY;
+
+        if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
+            wasDragging = true;
+        }
+    });
+
+    window.addEventListener('mouseup', (e) => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+
+        const diffY = e.clientY - startY;
+
+        if (wasDragging) {
+            // Dragged down -> next dish
+            if (diffY > 50) {
+                currentIndex = (currentIndex + 1) % dishes.length;
+                updateCarousel(currentIndex);
+            } 
+            // Dragged up -> prev dish
+            else if (diffY < -50) {
+                currentIndex = (currentIndex - 1 + dishes.length) % dishes.length;
+                updateCarousel(currentIndex);
+            }
+            // Reset interval to 0
+            startInterval();
+        }
+
+        setTimeout(() => {
+            wasDragging = false;
+        }, 50);
+    });
+
+    // Touch events for mobile swiping
+    let isTouching = false;
+
+    container.addEventListener('touchstart', (e) => {
+        isTouching = true;
+        wasDragging = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        clearInterval(carouselInterval);
+    });
+
+    container.addEventListener('touchmove', (e) => {
+        if (!isTouching) return;
+        const diffX = e.touches[0].clientX - startX;
+        const diffY = e.touches[0].clientY - startY;
+        if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
+            wasDragging = true;
+        }
+    });
+
+    container.addEventListener('touchend', (e) => {
+        if (!isTouching) return;
+        isTouching = false;
+
+        const diffY = e.changedTouches[0].clientY - startY;
+
+        if (wasDragging) {
+            if (diffY > 50) {
+                currentIndex = (currentIndex + 1) % dishes.length;
+                updateCarousel(currentIndex);
+            } else if (diffY < -50) {
+                currentIndex = (currentIndex - 1 + dishes.length) % dishes.length;
+                updateCarousel(currentIndex);
+            }
+            startInterval();
+        }
+
+        setTimeout(() => {
+            wasDragging = false;
+        }, 50);
+    });
+
+    // Click handler for navigation
+    container.addEventListener('click', (e) => {
+        if (wasDragging) return;
+
+        // A. Clicking next preview platter shifts it to active
+        const nextDish = e.target.closest('.dish-next');
+        if (nextDish) {
+            const nextIdx = parseInt(nextDish.dataset.index);
+            if (!isNaN(nextIdx)) {
+                currentIndex = nextIdx;
+                updateCarousel(currentIndex);
+                startInterval();
+            }
+            return;
+        }
+
+        // B. Clicking prev preview platter shifts it to active
+        const prevDish = e.target.closest('.dish-prev');
+        if (prevDish) {
+            const prevIdx = parseInt(prevDish.dataset.index);
+            if (!isNaN(prevIdx)) {
+                currentIndex = prevIdx;
+                updateCarousel(currentIndex);
+                startInterval();
+            }
+            return;
+        }
+
+        // C. Clicking active platter scrolls/navigates to details with glow
+        const activeDish = e.target.closest('.dish-active');
+        if (activeDish) {
+            const activeIdx = parseInt(activeDish.dataset.index);
+            if (!isNaN(activeIdx) && dishLinks[activeIdx]) {
+                const target = dishLinks[activeIdx];
+                const localEl = document.getElementById(target.id);
+                if (localEl) {
+                    localEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    localEl.classList.add('dish-glow');
+                    setTimeout(() => localEl.classList.remove('dish-glow'), 2100);
+                } else {
+                    window.location.href = target.menu;
+                }
+            }
+        }
+    });
+}
+
+// Check URL hash on page load to focus and glow targeted menu items
+window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash) {
+        const target = document.querySelector(hash);
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                target.classList.add('dish-glow');
+                setTimeout(() => {
+                    target.classList.remove('dish-glow');
+                }, 2100);
+            }, 400);
+        }
+    }
+});

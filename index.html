@@ -15,7 +15,7 @@
 <body>
 
     <!-- Sticky Header -->
-    <header class="navbar" id="main-navbar">
+    <header class="navbar navbar-transparent" id="main-navbar">
         <div class="nav-container">
             <a href="index.html" class="logo" id="nav-logo">
                 <div class="logo-diamond"></div>
@@ -35,7 +35,6 @@
                 </ul>
             </nav>
         </div>
-        <div class="margoum-border-top"></div>
     </header>
 
     <main>
@@ -47,15 +46,42 @@
                         <i class="fa-solid fa-utensils"></i> Cuisine Tunisienne Authentique
                     </div>
                     <h1>Restaurant Tunisien Traditionnel</h1>
-                    <p>Niché au cœur de La Marsa, <strong>Coin Margoum</strong> vous invite à un voyage gustatif inoubliable. Savourez nos plats traditionnels mijotés avec amour dans un cadre chaleureux inspiré de l'artisanat tunisien.</p>
+                    <p>Niché au cœur de La Marsa, <strong>Coin Margoum</strong> vous invite à un voyage gustatif inoubliable... </p>
                     <div class="hero-actions">
                         <a href="menu.html" class="btn btn-primary" id="hero-btn-menu">
-                            <i class="fa-solid fa-book-open"></i> Découvrir la Carte
+                            <i class="fa-solid fa-book-open"></i> Notre Carte
                         </a>
                         <a href="about.html#contact" class="btn btn-secondary" id="hero-btn-contact">
-                            <i class="fa-solid fa-map-location-dot"></i> Nous Rendre Visite
+                            <i class="fa-solid fa-map-location-dot"></i> Nous Trouver
                         </a>
                     </div>
+                </div>
+                <div class="hero-image-container" id="hero-dishes-carousel">
+                    <!-- Dish 1: Couscous au Poisson (starts active) -->
+                    <div class="hero-dish-wrapper dish-active" data-index="0">
+                        <img src="assets/dish_couscous_poisson.png" alt="Couscous au Poisson tunisien" class="dish-img" draggable="false">
+                    </div>
+                    <!-- Dish 2: Couscous à l'Agneau (starts next) -->
+                    <div class="hero-dish-wrapper dish-next" data-index="1">
+                        <img src="assets/dish_couscous_agneau.png" alt="Couscous à l'Agneau traditionnel" class="dish-img" draggable="false">
+                    </div>
+                    <!-- Dish 3: Ojja Merguez (starts hidden) -->
+                    <div class="hero-dish-wrapper dish-hidden" data-index="2">
+                        <img src="assets/dish_ojja.png" alt="Ojja tunisienne aux oeufs et merguez" class="dish-img" draggable="false">
+                    </div>
+                    <!-- Dish 4: Poisson Grillé (starts hidden) -->
+                    <div class="hero-dish-wrapper dish-hidden" data-index="3">
+                        <img src="assets/dish_poisson_grille.png" alt="Poisson grillé tunisien avec salade" class="dish-img" draggable="false">
+                    </div>
+                    <!-- Dish 5: Chakchouka (starts hidden) -->
+                    <div class="hero-dish-wrapper dish-hidden" data-index="4">
+                        <img src="assets/dish_chakchouka.png" alt="Chakchouka tunisienne aux oeufs et poivrons" class="dish-img" draggable="false">
+                    </div>
+                    <!-- Dish 6: Lablabi (starts hidden) -->
+                    <div class="hero-dish-wrapper dish-hidden" data-index="5">
+                        <img src="assets/dish_lablabi.png" alt="Lablabi tunisien aux pois chiches et thon" class="dish-img" draggable="false">
+                    </div>
+                </div>
             </div>
         </section>
 
