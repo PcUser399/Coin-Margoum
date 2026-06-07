@@ -284,12 +284,12 @@ function initHeroCarousel() {
 
     // 2. Click/Drag navigation & interaction mapping
     const dishLinks = {
-        0: { id: 'menu-couscous-poisson', menu: 'menu.html?dish=menu-couscous-poisson' }, // Couscous au Poisson
-        1: { id: 'menu-couscous',         menu: 'menu.html?dish=menu-couscous'         }, // Couscous à l'Agneau
-        2: { id: 'menu-ojja',             menu: 'menu.html?dish=menu-ojja'             }, // Ojja Merguez
-        3: { id: 'menu-poisson-grille',   menu: 'menu.html?dish=menu-poisson-grille'   }, // Poisson Grillé
-        4: { id: 'menu-chakchouka',       menu: 'menu.html?dish=menu-chakchouka'       }, // Chakchouka
-        5: { id: 'menu-lablabi',          menu: 'menu.html?dish=menu-lablabi'          }  // Lablabi
+        0: { id: 'menu-item-65', menu: 'menu.html?dish=menu-item-65' }, // Couscous au Poisson
+        1: { id: 'menu-item-64',         menu: 'menu.html?dish=menu-item-64'         }, // Couscous à l'Agneau
+        2: { id: 'menu-item-67',             menu: 'menu.html?dish=menu-item-67'             }, // Ojja Merguez
+        3: { id: 'menu-item-70',   menu: 'menu.html?dish=menu-item-70'   }, // Poisson Grillé
+        4: { id: 'menu-item-63',       menu: 'menu.html?dish=menu-item-63'       }, // Chakchouka
+        5: { id: 'menu-item-62',          menu: 'menu.html?dish=menu-item-62'          }  // Lablabi
     };
 
     let startX = 0;
@@ -455,8 +455,8 @@ window.addEventListener('load', () => {
     if (!targetId && window.location.hash) {
         targetId = window.location.hash.substring(1);
     }
-    
     if (targetId) {
+        setTimeout( ()=>{
         const target = document.getElementById(targetId);
         if (target) {
             setTimeout(() => {
@@ -466,7 +466,7 @@ window.addEventListener('load', () => {
                     target.classList.remove('dish-glow');
                 }, 2100);
             }, 100);
-        }
+        }},1500)
     }
 });
 
