@@ -11,6 +11,8 @@ async function handleResponse(res) {
 }
 
 async function login(password) {
+  console.log("Frontend sending password:", password);
+
   const res = await fetch(`${API}/api/login`, {
     method: "POST",
     credentials: "include",
@@ -20,7 +22,16 @@ async function login(password) {
     body: JSON.stringify({ password })
   });
 
-  return handleResponse(res);
+  console.log("Backend status:", res.status);
+
+  const data = await res.json();
+  console.log("Backend response:", data);
+
+  if (!res.ok) {
+    throw new Error(data.error || "Login failed");
+  }
+
+  return data;
 }
 
 async function logout() {
