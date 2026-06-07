@@ -751,7 +751,7 @@ function parseStaticItems() {
             price,
             category,
             image,
-            trStyle: isTr,
+            trstyle: isTr,
             footerIcon,
             footerTextLeft,
             footerTextRight,
@@ -784,7 +784,7 @@ function renderMenu(items, isAdmin) {
     
     items.forEach(item => {
         const itemEl = document.createElement('div');
-        const itemClass = item.trStyle ? 'menu-item-tr' : 'menu-item';
+        const itemClass = item.trstyle ? 'menu-item-tr' : 'menu-item';
         itemEl.className = itemClass;
         itemEl.dataset.category = item.category;
         
@@ -792,7 +792,7 @@ function renderMenu(items, isAdmin) {
         itemEl.dataset.id = item._id || item.id;
         itemEl.id = item.idStr || `menu-item-${item._id || item.id}`;
         let imgHtml = '';
-        const imgClass = item.trStyle ? 'menu-item-img-tr' : 'menu-item-img';
+        const imgClass = item.trstyle ? 'menu-item-img-tr' : 'menu-item-img';
         
         if (item.image_url) {
             imgHtml = `<div class="${imgClass}"><img src="${item.image_url}" alt="${item.name}"></div>`;
@@ -1007,11 +1007,11 @@ function showAdminItemModal(item = null) {
             <textarea id="modal-item-desc" class="admin-form-control admin-form-textarea" placeholder="Entrez la description du plat...">${isEdit ? item.description || '' : ''}</textarea>
         </div>
         <div class="admin-form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; margin-bottom: 1.5rem;">
-            <input type="checkbox" id="modal-item-tr" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.trStyle ? 'checked' : ''}>
-            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">Style d'assiette détourée (trStyle)</label>
+            <input type="checkbox" id="modal-item-tr" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.trstyle ? 'checked' : ''}>
+            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">Style d'assiette détourée (trstyle)</label>
         </div>
         <div class="admin-form-group" style="display: flex; align-items: center; gap: 10px; margin-top: .75rem; margin-bottom: 1.5rem;">
-            <input type="checkbox" id="modal-item-available" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.available ? 'checked' : ''}>
+            <input type="checkbox" id="modal-item-available" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit? (item.available ? 'checked' : '') : 'checked' }>
             <label for="modal-item-tr" style="margin: 0; cursor: pointer;">item available</label>
         </div>
         <div class="admin-form-group">
@@ -1082,7 +1082,7 @@ async function handleModalSubmit(existingItem = null) {
     const priceVal = document.getElementById('modal-item-price').value;
     const category = document.getElementById('modal-item-category').value;
     const description = document.getElementById('modal-item-desc').value.trim();
-    const trStyle = document.getElementById('modal-item-tr').checked;
+    const trstyle = document.getElementById('modal-item-tr').checked;
     const available = document.getElementById('modal-item-available').checked;
 
     
@@ -1104,7 +1104,7 @@ async function handleModalSubmit(existingItem = null) {
         category,
         description,
         available,
-        trStyle
+        trstyle
     };
     // In case no new image file is chosen during edit, preserve old database image
     if (isEdit && (!fileInput.files || fileInput.files.length === 0)) {
