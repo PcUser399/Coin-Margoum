@@ -466,7 +466,7 @@ window.addEventListener('load', () => {
                     target.classList.remove('dish-glow');
                 }, 2100);
             }, 100);
-        }},1500)
+        }},750)
     }
 });
 
@@ -581,7 +581,6 @@ function showPasswordPopup() {
 
         try {
             await login(password);
-            alert('Connexion réussie !');
             closeModal();
             window.location.reload();
         }  catch (error) {
@@ -675,7 +674,6 @@ async function initNavbarAdminStatus() {
             if (confirm("Voulez-vous vous déconnecter de l'espace administrateur ?")) {
                 try {
                     await logout();
-                    alert("Déconnexion réussie.");
                     window.location.reload();
                 } catch (err) {
                     alert("Erreur lors de la déconnexion : " + err.message);
@@ -1022,6 +1020,9 @@ function showAdminItemModal(item = null) {
                 <input type="file" id="modal-item-file" accept="image/*" onchange="handleModalFileChange(this)">
                 <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image_url ? 'Image actuelle : ' + item.image_url.split('/').pop() : ''}</div>
             </div>
+        </div>
+        <div class="${item.available ? 'available' : 'not_available'}">
+            ${item.available ? 'available' : 'not_available'}
         </div>
 
     `;

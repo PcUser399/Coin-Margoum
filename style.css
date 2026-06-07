@@ -696,6 +696,13 @@ footer {
     pointer-events: none;
 }
 
+.available{
+
+}
+.not_available{
+    
+}
+
 @keyframes soft-float {
     0% {
         transform: translateY(0);
