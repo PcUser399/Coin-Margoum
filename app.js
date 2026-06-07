@@ -780,21 +780,103 @@ function renderMenu(items, isAdmin) {
         container.appendChild(seedBanner);
     }
     
+const footerFallbacks = {
+    "brik": { icon: "fa-solid fa-lemon", left: "Servie avec citron", right: "Croustillant" },
+    "mechouia": { icon: "fa-solid fa-fire", left: "Relevé", right: "Entrée froide" },
+    "chorba": { icon: "fa-solid fa-bowl-food", left: "Soupe chaude", right: "Au poulet/agneau" },
+    "lablabi": { icon: "fa-solid fa-bowl-hot", left: "Servi chaud", right: "Plat du matin" },
+    "chakchouka": { icon: "fa-solid fa-fire", left: "Relevé", right: "Végétarien" },
+    "couscous à l'agneau": { icon: "fa-solid fa-award", left: "Signature", right: "Pour les gourmets" },
+    "couscous au poisson": { icon: "fa-solid fa-fish", left: "Poisson frais", right: "Plat du jour" },
+    "riz": { icon: "fa-solid fa-carrot", left: "Fait maison", right: "Cuit vapeur" },
+    "ojja": { icon: "fa-solid fa-fire", left: "Très relevé", right: "Mijoté minute" },
+    "tajine": { icon: "fa-solid fa-pizza-slice", left: "Moelleux", right: "Cuit au four" },
+    "kafteji": { icon: "fa-solid fa-pepper-hot", left: "Relevé", right: "Servi chaud" },
+    "kamounia": { icon: "fa-solid fa-mortar-pestle", left: "Parfumé au cumin", right: "Sauce onctueuse" },
+    "poisson grillé": { icon: "fa-solid fa-fish-fins", left: "Selon arrivage", right: "Grillé au charbon" },
+    "poisson grille": { icon: "fa-solid fa-fish-fins", left: "Selon arrivage", right: "Grillé au charbon" },
+    "mixte": { icon: "fa-solid fa-drumstick-bite", left: "Assortiment", right: "Cuit au charbon" },
+    "côtelettes": { icon: "fa-solid fa-ribbon", left: "Tendre", right: "Assaisonné minute" },
+    "cotelettes": { icon: "fa-solid fa-ribbon", left: "Tendre", right: "Assaisonné minute" },
+    "brochettes": { icon: "fa-solid fa-circle-info", left: "Léger", right: "Mariné 12 heures" },
+    "bambalouni": { icon: "fa-solid fa-hot-tub-person", left: "Servi chaud", right: "Moelleux" },
+    "thé": { icon: "fa-solid fa-mug-sparkles", left: "Un classique", right: "Détente" },
+    "the": { icon: "fa-solid fa-mug-sparkles", left: "Un classique", right: "Détente" }
+};
+
+/**
+ * Renders the menu items in the #menu-items-container.
+ */
+function renderMenu(items, isAdmin) {
+    const container = document.getElementById('menu-items-container');
+    if (!container) return;
+    
+    const moreBox = document.getElementById('menu-more-placeholder');
+    container.innerHTML = '';
+    
+    if (isAdmin && items.length === 0) {
+        const seedBanner = document.createElement('div');
+        seedBanner.className = 'admin-seed-banner';
+        seedBanner.innerHTML = `
+            <h3><i class="fa-solid fa-database" style="color: var(--color-primary-orange); margin-right: 8px;"></i>Base de données vide</h3>
+            <p>La base de données en ligne ne contient aucun plat. Vous pouvez l'initialiser automatiquement avec les 18 plats par défaut de Coin Margoum définis dans le code HTML d'origine.</p>
+            <button class="btn btn-primary" onclick="seedDefaultMenu()"><i class="fa-solid fa-cloud-arrow-up" style="margin-right: 6px;"></i> Initialiser la base de données</button>
+        `;
+        container.appendChild(seedBanner);
+    }
+    
     items.forEach(item => {
+        const nameLower = item.name.toLowerCase();
+        
+        // Map database image_url or image path
+        const image = item.image_url || item.image;
+        
+        // Decide trStyle (fallback to defaults if undefined by Postgres)
+        let trStyle = item.trStyle;
+        if (trStyle === undefined) {
+            const trStyleKeywords = ['couscous', 'lablabi', 'chakchouka', 'ojja', 'poisson grillé', 'poisson grille'];
+            trStyle = trStyleKeywords.some(keyword => nameLower.includes(keyword));
+        }
+        
+        // Decide footer parameters
+        let footerIcon = item.footerIcon;
+        let footerTextLeft = item.footerTextLeft;
+        let footerTextRight = item.footerTextRight;
+        
+        if (!footerTextLeft && !footerTextRight) {
+            const fallbackKeys = Object.keys(footerFallbacks);
+            const matchedKey = fallbackKeys.find(key => nameLower.includes(key));
+            if (matchedKey) {
+                footerIcon = footerFallbacks[matchedKey].icon;
+                footerTextLeft = footerFallbacks[matchedKey].left;
+                footerTextRight = footerFallbacks[matchedKey].right;
+            }
+        }
+        
+        // Decide idStr (for target scrolls redirection alignment)
+        let idStr = item.idStr;
+        if (!idStr) {
+            idStr = 'menu-' + item.name.toLowerCase()
+                                       .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // strip accents
+                                       .replace(/à l'|au |la |le |les |aux |du |de |d'/g, '')
+                                       .replace(/[^a-z0-9]+/g, '-')
+                                       .replace(/^-+|-+$/g, '');
+        }
+
         const itemEl = document.createElement('div');
-        const itemClass = item.trStyle ? 'menu-item-tr' : 'menu-item';
+        const itemClass = trStyle ? 'menu-item-tr' : 'menu-item';
         itemEl.className = itemClass;
         itemEl.dataset.category = item.category;
         
         // Save identifier and set ID for scroll targeting
         itemEl.dataset.id = item._id || item.id;
-        itemEl.id = item.idStr || `menu-item-${item._id || item.id}`;
+        itemEl.id = idStr || `menu-item-${item._id || item.id}`;
         
         let imgHtml = '';
-        const imgClass = item.trStyle ? 'menu-item-img-tr' : 'menu-item-img';
+        const imgClass = trStyle ? 'menu-item-img-tr' : 'menu-item-img';
         
-        if (item.image) {
-            imgHtml = `<div class="${imgClass}"><img src="${item.image}" alt="${item.name}"></div>`;
+        if (image) {
+            imgHtml = `<div class="${imgClass}"><img src="${image}" alt="${item.name}"></div>`;
         } else {
             const placeholderIcon = item.category === 'desserts' ? 'fa-cookie' : 
                                     (item.category === 'grillades' ? 'fa-fire' : 'fa-bowl-food');
@@ -822,12 +904,12 @@ function renderMenu(items, isAdmin) {
         }
         
         let footerHtml = '';
-        if (item.footerTextLeft || item.footerTextRight) {
-            const iconHtml = item.footerIcon ? `<i class="${item.footerIcon}"></i> ` : '';
+        if (footerTextLeft || footerTextRight) {
+            const iconHtml = footerIcon ? `<i class="${footerIcon}"></i> ` : '';
             footerHtml = `
                 <div class="menu-item-footer">
-                    <span>${iconHtml}${item.footerTextLeft || ''}</span>
-                    <span>${item.footerTextRight || ''}</span>
+                    <span>${iconHtml}${footerTextLeft || ''}</span>
+                    <span>${footerTextRight || ''}</span>
                 </div>
             `;
         }
@@ -1009,7 +1091,7 @@ function showAdminItemModal(item = null) {
                 <i class="fa-solid fa-cloud-arrow-up"></i>
                 <p>Cliquez pour choisir une image</p>
                 <input type="file" id="modal-item-file" accept="image/*" onchange="handleModalFileChange(this)">
-                <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image ? 'Image actuelle : ' + item.image.split('/').pop() : ''}</div>
+                <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && (item.image_url || item.image) ? 'Image actuelle : ' + (item.image_url || item.image).split('/').pop() : ''}</div>
             </div>
         </div>
         <div style="border-top: 1px solid var(--color-border); margin: 1.5rem 0; padding-top: 1rem;">
@@ -1116,7 +1198,7 @@ async function handleModalSubmit(existingItem = null) {
     
     // In case no new image file is chosen during edit, preserve old database image
     if (isEdit && (!fileInput.files || fileInput.files.length === 0)) {
-        itemData.image = existingItem.image;
+        itemData.image = existingItem.image_url || existingItem.image;
     }
     
     try {
