@@ -788,8 +788,7 @@ footer {
 
 /* Featured Plates */
 .plates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
     gap: var(--space-md);
 }
 
@@ -1586,6 +1585,8 @@ footer {
     gap: 1rem;
     text-align: center;
     box-shadow: var(--shadow-sm);
+    width: 67vw;
+
 }
 
 .admin-seed-banner h3 {

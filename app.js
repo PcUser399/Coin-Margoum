@@ -751,7 +751,7 @@ function parseStaticItems() {
             price,
             category,
             image,
-            trStyle: isTr,
+            trstyle: isTr,
             footerIcon,
             footerTextLeft,
             footerTextRight,
@@ -776,7 +776,7 @@ function renderMenu(items, isAdmin) {
         seedBanner.className = 'admin-seed-banner';
         seedBanner.innerHTML = `
             <h3><i class="fa-solid fa-database" style="color: var(--color-primary-orange); margin-right: 8px;"></i>Base de données vide</h3>
-            <p>La base de données en ligne ne contient aucun plat. Vous pouvez l'initialiser automatiquement avec les 18 plats par défaut de Coin Margoum définis dans le code HTML d'origine.</p>
+            <p>La base de données en ligne ne contient aucun plat. Vous pouvez l'initialiser automatiquement avec les 10 plats par défaut de Coin Margoum définis dans le code HTML d'origine.</p>
             <button class="btn btn-primary" onclick="seedDefaultMenu()"><i class="fa-solid fa-cloud-arrow-up" style="margin-right: 6px;"></i> Initialiser la base de données</button>
         `;
         container.appendChild(seedBanner);
@@ -784,19 +784,18 @@ function renderMenu(items, isAdmin) {
     
     items.forEach(item => {
         const itemEl = document.createElement('div');
-        const itemClass = item.trStyle ? 'menu-item-tr' : 'menu-item';
+        const itemClass = item.trstyle ? 'menu-item-tr' : 'menu-item';
         itemEl.className = itemClass;
         itemEl.dataset.category = item.category;
         
         // Save identifier and set ID for scroll targeting
         itemEl.dataset.id = item._id || item.id;
         itemEl.id = item.idStr || `menu-item-${item._id || item.id}`;
-        
         let imgHtml = '';
-        const imgClass = item.trStyle ? 'menu-item-img-tr' : 'menu-item-img';
+        const imgClass = item.trstyle ? 'menu-item-img-tr' : 'menu-item-img';
         
-        if (item.image) {
-            imgHtml = `<div class="${imgClass}"><img src="${item.image}" alt="${item.name}"></div>`;
+        if (item.image_url) {
+            imgHtml = `<div class="${imgClass}"><img src="${item.image_url}" alt="${item.name}"></div>`;
         } else {
             const placeholderIcon = item.category === 'desserts' ? 'fa-cookie' : 
                                     (item.category === 'grillades' ? 'fa-fire' : 'fa-bowl-food');
@@ -907,7 +906,7 @@ async function initAdminMenu() {
     try {
         const items = await getMenu();
         currentItems = items;
-        
+        console.log(items);
         if (items && items.length > 0) {
             renderMenu(items, isAdmin);
         } else {
@@ -958,6 +957,7 @@ async function initAdminMenu() {
  * Creates and displays an Admin Modal for creating or updating a menu item.
  */
 function showAdminItemModal(item = null) {
+    console.log(item);
     const existing = document.getElementById('admin-item-modal');
     if (existing) existing.remove();
     
@@ -1002,8 +1002,8 @@ function showAdminItemModal(item = null) {
             <textarea id="modal-item-desc" class="admin-form-control admin-form-textarea" placeholder="Entrez la description du plat...">${isEdit ? item.description || '' : ''}</textarea>
         </div>
         <div class="admin-form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; margin-bottom: 1.5rem;">
-            <input type="checkbox" id="modal-item-tr" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.trStyle ? 'checked' : ''}>
-            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">Style d'assiette détourée (trStyle)</label>
+            <input type="checkbox" id="modal-item-tr" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.trstyle ? 'checked' : ''}>
+            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">Style d'assiette détourée (trstyle)</label>
         </div>
         <div class="admin-form-group">
             <label>Image du plat</label>
@@ -1011,7 +1011,7 @@ function showAdminItemModal(item = null) {
                 <i class="fa-solid fa-cloud-arrow-up"></i>
                 <p>Cliquez pour choisir une image</p>
                 <input type="file" id="modal-item-file" accept="image/*" onchange="handleModalFileChange(this)">
-                <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image ? 'Image actuelle : ' + item.image.split('/').pop() : ''}</div>
+                <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image_url ? 'Image actuelle : ' + item.image_url.split('/').pop() : ''}</div>
             </div>
         </div>
         <div style="border-top: 1px solid var(--color-border); margin: 1.5rem 0; padding-top: 1rem;">
@@ -1087,7 +1087,7 @@ async function handleModalSubmit(existingItem = null) {
     const priceVal = document.getElementById('modal-item-price').value;
     const category = document.getElementById('modal-item-category').value;
     const description = document.getElementById('modal-item-desc').value.trim();
-    const trStyle = document.getElementById('modal-item-tr').checked;
+    const trstyle = document.getElementById('modal-item-tr').checked;
     
     const footerIcon = document.getElementById('modal-item-footer-icon').value.trim();
     const footerTextLeft = document.getElementById('modal-item-footer-left').value.trim();
@@ -1110,15 +1110,13 @@ async function handleModalSubmit(existingItem = null) {
         price,
         category,
         description,
-        trStyle,
-        footerIcon,
-        footerTextLeft,
-        footerTextRight
+        available,
+        trstyle
     };
     
     // In case no new image file is chosen during edit, preserve old database image
     if (isEdit && (!fileInput.files || fileInput.files.length === 0)) {
-        itemData.image = existingItem.image;
+        itemData.image_url = existingItem.image_url;
     }
     
     try {
@@ -1136,7 +1134,6 @@ async function handleModalSubmit(existingItem = null) {
             await uploadFoodImage(targetId, file);
         }
         
-        alert(isEdit ? "Plat modifié avec succès !" : "Plat ajouté avec succès !");
         closeAdminModal();
         window.location.reload();
     } catch (err) {
@@ -1153,7 +1150,6 @@ async function deleteItemClick(id) {
     if (confirm("Voulez-vous vraiment supprimer ce plat ? Cette action est irréversible.")) {
         try {
             await deleteMenuItem(id);
-            alert("Plat supprimé avec succès !");
             window.location.reload();
         } catch (err) {
             alert("Erreur lors de la suppression : " + err.message);
@@ -1165,7 +1161,7 @@ async function deleteItemClick(id) {
  * Triggers modal form configuration in edit mode.
  */
 function editItem(id) {
-    const item = currentItems.find(i => (i._id || i.id) === id);
+    const item = currentItems.find(i => Number(i.id) === Number(id));
     if (item) {
         showAdminItemModal(item);
     } else {
