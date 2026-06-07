@@ -59,6 +59,12 @@ async function getMenu() {
   return handleResponse(res);
 }
 
+
+async function getAdminMenu() {
+  const res = await fetch(`${API}/api/admin/menu`);
+  return handleResponse(res);
+}
+
 async function addMenuItem(item) {
   const res = await fetch(`${API}/api/admin/menu`, {
     method: "POST",

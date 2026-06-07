@@ -904,7 +904,11 @@ async function initAdminMenu() {
     await initNavbarAdminStatus();
     
     try {
-        const items = await getMenu();
+        if(!isAdmin){
+            const items = await getMenu();
+        }else{
+            const items = await getAdminMenu();
+        }
         currentItems = items;
         console.log(items);
         if (items && items.length > 0) {
@@ -1005,6 +1009,10 @@ function showAdminItemModal(item = null) {
             <input type="checkbox" id="modal-item-tr" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.trstyle ? 'checked' : ''}>
             <label for="modal-item-tr" style="margin: 0; cursor: pointer;">Style d'assiette détourée (trstyle)</label>
         </div>
+        <div class="admin-form-group" style="display: flex; align-items: center; gap: 10px; margin-top: .75rem; margin-bottom: 1.5rem;">
+            <input type="checkbox" id="modal-item-available" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit && item.available ? 'checked' : ''}>
+            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">item available</label>
+        </div>
         <div class="admin-form-group">
             <label>Image du plat</label>
             <div class="admin-file-upload" onclick="document.getElementById('modal-item-file').click()">
@@ -1014,21 +1022,7 @@ function showAdminItemModal(item = null) {
                 <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image_url ? 'Image actuelle : ' + item.image_url.split('/').pop() : ''}</div>
             </div>
         </div>
-        <div style="border-top: 1px solid var(--color-border); margin: 1.5rem 0; padding-top: 1rem;">
-            <h4 style="margin-top: 0; margin-bottom: 0.75rem; color: var(--color-text-main); font-size: 0.95rem;">Options bas de page (Footer)</h4>
-            <div class="admin-form-group">
-                <label for="modal-item-footer-icon">Icône (classe FontAwesome)</label>
-                <input type="text" id="modal-item-footer-icon" class="admin-form-control" placeholder="Ex: fa-solid fa-award" value="${isEdit ? item.footerIcon || '' : ''}">
-            </div>
-            <div class="admin-form-group">
-                <label for="modal-item-footer-left">Texte gauche (Caractéristique)</label>
-                <input type="text" id="modal-item-footer-left" class="admin-form-control" placeholder="Ex: Signature" value="${isEdit ? item.footerTextLeft || '' : ''}">
-            </div>
-            <div class="admin-form-group">
-                <label for="modal-item-footer-right">Texte droite (Note)</label>
-                <input type="text" id="modal-item-footer-right" class="admin-form-control" placeholder="Ex: Pour les gourmets" value="${isEdit ? item.footerTextRight || '' : ''}">
-            </div>
-        </div>
+
     `;
     
     const footer = document.createElement('div');
@@ -1088,10 +1082,8 @@ async function handleModalSubmit(existingItem = null) {
     const category = document.getElementById('modal-item-category').value;
     const description = document.getElementById('modal-item-desc').value.trim();
     const trstyle = document.getElementById('modal-item-tr').checked;
-    
-    const footerIcon = document.getElementById('modal-item-footer-icon').value.trim();
-    const footerTextLeft = document.getElementById('modal-item-footer-left').value.trim();
-    const footerTextRight = document.getElementById('modal-item-footer-right').value.trim();
+    const available = document.getElementById('modal-item-available').checked;
+
     
     const fileInput = document.getElementById('modal-item-file');
     
