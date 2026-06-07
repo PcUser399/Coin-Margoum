@@ -697,12 +697,14 @@ footer {
 }
 
 .available{
-
+    color: green;
 }
 .not_available{
-    
+    color: red;
 }
-
+.hide{
+    display: none !important;
+}
 @keyframes soft-float {
     0% {
         transform: translateY(0);
@@ -1565,7 +1567,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(254, 161, 22, 0.4);
     border: none;
     cursor: pointer;
     z-index: 2000;

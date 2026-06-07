@@ -840,6 +840,9 @@ function renderMenu(items, isAdmin) {
                     <span class="menu-item-price">${item.price} DT</span>
                 </div>
                 <p class="menu-item-desc">${item.description || ''}</p>
+                <div class="${item.available ? 'available' : 'not_available'}  ${isAdmin? '':'hide'}">
+                    ${item.available ? 'available' : 'not_available'}
+                </div>
                 ${footerHtml}
             </div>
         `;
@@ -994,10 +997,10 @@ function showAdminItemModal(item = null) {
         <div class="admin-form-group">
             <label for="modal-item-category">Catégorie *</label>
             <select id="modal-item-category" class="admin-form-control" required>
-                <option value="starters" ${isEdit && item.category === 'Entrées & Salades' ? 'selected' : ''}>Entrées & Salades</option>
-                <option value="traditionnel" ${isEdit && item.category === 'Plats Traditionnels' ? 'selected' : ''}>Plats Traditionnels</option>
-                <option value="grillades" ${isEdit && item.category === 'Grillades' ? 'selected' : ''}>Grillades</option>
-                <option value="desserts" ${isEdit && item.category === 'Desserts & Thé' ? 'selected' : ''}>Desserts & Thé</option>
+                <option value="Entrées & Salades" ${isEdit && item.category === 'Entrées & Salades' ? 'selected' : ''}>Entrées & Salades</option>
+                <option value="Plats Traditionnels" ${isEdit && item.category === 'Plats Traditionnels' ? 'selected' : ''}>Plats Traditionnels</option>
+                <option value="Grillades" ${isEdit && item.category === 'Grillades' ? 'selected' : ''}>Grillades</option>
+                <option value="Desserts & Thé" ${isEdit && item.category === 'Desserts & Thé' ? 'selected' : ''}>Desserts & Thé</option>
             </select>
         </div>
         <div class="admin-form-group">
@@ -1020,9 +1023,6 @@ function showAdminItemModal(item = null) {
                 <input type="file" id="modal-item-file" accept="image/*" onchange="handleModalFileChange(this)">
                 <div id="modal-file-preview" class="admin-file-upload-preview">${isEdit && item.image_url ? 'Image actuelle : ' + item.image_url.split('/').pop() : ''}</div>
             </div>
-        </div>
-        <div class="${item.available ? 'available' : 'not_available'}">
-            ${item.available ? 'available' : 'not_available'}
         </div>
 
     `;
