@@ -996,10 +996,10 @@ function showAdminItemModal(item = null) {
         <div class="admin-form-group">
             <label for="modal-item-category">Catégorie *</label>
             <select id="modal-item-category" class="admin-form-control" required>
-                <option value="starters" ${isEdit && item.category === 'starters' ? 'selected' : ''}>Entrées & Salades</option>
-                <option value="traditionnel" ${isEdit && item.category === 'traditionnel' ? 'selected' : ''}>Plats Traditionnels</option>
-                <option value="grillades" ${isEdit && item.category === 'grillades' ? 'selected' : ''}>Grillades</option>
-                <option value="desserts" ${isEdit && item.category === 'desserts' ? 'selected' : ''}>Desserts & Thé</option>
+                <option value="starters" ${isEdit && item.category === 'Entrées & Salades' ? 'selected' : ''}>Entrées & Salades</option>
+                <option value="traditionnel" ${isEdit && item.category === 'Plats Traditionnels' ? 'selected' : ''}>Plats Traditionnels</option>
+                <option value="grillades" ${isEdit && item.category === 'Grillades' ? 'selected' : ''}>Grillades</option>
+                <option value="desserts" ${isEdit && item.category === 'Desserts & Thé' ? 'selected' : ''}>Desserts & Thé</option>
             </select>
         </div>
         <div class="admin-form-group">
@@ -1012,7 +1012,7 @@ function showAdminItemModal(item = null) {
         </div>
         <div class="admin-form-group" style="display: flex; align-items: center; gap: 10px; margin-top: .75rem; margin-bottom: 1.5rem;">
             <input type="checkbox" id="modal-item-available" class="admin-form-control" style="width: auto; cursor: pointer;" ${isEdit? (item.available ? 'checked' : '') : 'checked' }>
-            <label for="modal-item-tr" style="margin: 0; cursor: pointer;">item available</label>
+            <label for="modal-item-available" style="margin: 0; cursor: pointer;">item available</label>
         </div>
         <div class="admin-form-group">
             <label>Image du plat</label>
@@ -1127,7 +1127,7 @@ async function handleModalSubmit(existingItem = null) {
         }
         
         closeAdminModal();
-        window.location.reload();
+        await initAdminMenu() ;
     } catch (err) {
         alert("Erreur lors de l'enregistrement : " + err.message);
         submitBtn.disabled = false;
@@ -1142,7 +1142,8 @@ async function deleteItemClick(id) {
     if (confirm("Voulez-vous vraiment supprimer ce plat ? Cette action est irréversible.")) {
         try {
             await deleteMenuItem(id);
-            window.location.reload();
+            await initAdminMenu() ;
+
         } catch (err) {
             alert("Erreur lors de la suppression : " + err.message);
         }
