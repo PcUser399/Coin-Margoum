@@ -568,6 +568,7 @@ function showPasswordPopup() {
     submitBtn.style.fontSize = '0.9rem';
 
     const performLogin = async () => {
+        if (submitBtn.disabled) return;
         const password = input.value;
         if (!password) {
             errMsg.textContent = 'Veuillez saisir un mot de passe.';
@@ -583,12 +584,13 @@ function showPasswordPopup() {
             alert('Connexion réussie !');
             closeModal();
             window.location.reload();
-        } catch (error) {
+        }  catch (error) {
             errMsg.textContent = error.message || 'Échec de la connexion.';
             errMsg.style.display = 'block';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Se connecter';
-        }
+           }finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Se connecter';
+            }
     };
 
     submitBtn.addEventListener('click', performLogin);
