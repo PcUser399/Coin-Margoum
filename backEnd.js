@@ -61,7 +61,7 @@ async function getMenu() {
 
 
 async function getAdminMenu() {
-  const res = await fetch(`${API}/api/admin/menu`);
+  const res = await fetch(`${API}/api/admin/menu`, {credentials: "include"});
   return handleResponse(res);
 }
 
