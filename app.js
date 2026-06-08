@@ -76,7 +76,7 @@ function initScrollNavbar() {
 
         const checkScroll = () => {
             const heroHeight = hero.offsetHeight - navbar.offsetHeight;
-            const reservationPos = reservatoin.offsetTop - 75;
+            const reservationPos = reservatoin.offsetTop - 85;
             console.log(reservationPos);
             const scrollY = window.scrollY;
 
