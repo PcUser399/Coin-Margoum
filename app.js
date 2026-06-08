@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init Google Reviews infinite slider
     initReviewsSlider();
+
+    // Init reservation form
+    initReservationForm();
 });
 
 /**
@@ -64,6 +67,7 @@ function initMobileNav() {
 function initScrollNavbar() {
     const navbar = document.getElementById('main-navbar');
     const hero = document.getElementById('hero-section');
+    const reservatoin = document.getElementById('reservation-section');
     if (!navbar) return;
 
     if (hero) {
@@ -72,18 +76,21 @@ function initScrollNavbar() {
 
         const checkScroll = () => {
             const heroHeight = hero.offsetHeight - navbar.offsetHeight;
+            const reservationPos = reservatoin.offsetTop - 75;
+            console.log(reservationPos);
             const scrollY = window.scrollY;
 
             // Reset navbar classes
             navbar.classList.remove('navbar-transparent', 'navbar-dark-overlay', 'navbar-scrolled');
 
-            if (scrollY > heroHeight) {
+            if (scrollY > heroHeight && scrollY < reservationPos) {
                 navbar.classList.add('navbar-scrolled');
-            } else if (scrollY > 75) {
+            } else if (scrollY > 75 ) {
                 navbar.classList.add('navbar-dark-overlay');
-            } else {
+            } else if(scrollY <= 75){
                 navbar.classList.add('navbar-transparent');
             }
+            
         };
 
         window.addEventListener('scroll', checkScroll);
@@ -464,7 +471,116 @@ function initReviewsSlider() {
     });
 }
 
+/**
+ * Reservation Form Handler
+ * Validates fields, shows success feedback, and fires a WhatsApp notification
+ * to the restaurant so the owner is notified immediately.
+ */
+function initReservationForm() {
+    const form = document.getElementById('reservation-form');
+    if (!form) return;
+
+    // Set minimum datetime to right now so users can't pick a past date
+    const dateInput = document.getElementById('res-date');
+    if (dateInput) {
+        const now = new Date();
+        // Format: YYYY-MM-DDTHH:MM
+        const pad = n => String(n).padStart(2, '0');
+        dateInput.min = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const feedback = document.getElementById('res-feedback');
+        const submitBtn = document.getElementById('res-submit-btn');
+
+        // Gather values
+        const name    = document.getElementById('res-name').value.trim();
+        const phone   = document.getElementById('res-phone').value.trim();
+        const date    = document.getElementById('res-date').value;
+        const guests  = document.getElementById('res-guests').value;
+        const message = document.getElementById('res-message').value.trim();
+
+        // Reset previous feedback
+        feedback.className = 'res-feedback';
+        feedback.textContent = '';
+
+        // Basic validation
+        const requiredFields = [
+            { el: document.getElementById('res-name'),   val: name   },
+            { el: document.getElementById('res-phone'),  val: phone  },
+            { el: document.getElementById('res-date'),   val: date   },
+            { el: document.getElementById('res-guests'), val: guests },
+        ];
+
+        let valid = true;
+        requiredFields.forEach(({ el, val }) => {
+            if (!val) {
+                el.style.borderColor = 'rgba(192,57,43,0.8)';
+                el.style.boxShadow   = '0 0 0 3px rgba(192,57,43,0.18)';
+                valid = false;
+                // Clear the error highlight on next focus
+                el.addEventListener('focus', () => {
+                    el.style.borderColor = '';
+                    el.style.boxShadow   = '';
+                }, { once: true });
+            }
+        });
+
+        if (!valid) {
+            feedback.textContent = 'Veuillez remplir tous les champs obligatoires.';
+            feedback.className   = 'res-feedback error';
+            return;
+        }
+
+        // Format date for display
+        const dateObj      = new Date(date);
+        const dateFormatted = dateObj.toLocaleString('fr-FR', {
+            weekday: 'long', year: 'numeric', month: 'long',
+            day: 'numeric', hour: '2-digit', minute: '2-digit'
+        });
+
+        // Build WhatsApp message
+        const waPhone = '21650335898'; // restaurant number without +
+        const waText  = encodeURIComponent(
+            `🍽️ *Nouvelle réservation – Coin Margoum*\n\n` +
+            `👤 Nom : ${name}\n` +
+            `📞 Téléphone : ${phone}\n` +
+            `📅 Date : ${dateFormatted}\n` +
+            `👥 Personnes : ${guests}\n` +
+            (message ? `💬 Message : ${message}` : `💬 Pas de message spécial`)
+        );
+
+        // Disable button briefly
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi…';
+
+        // Open WhatsApp in a new tab (deep-link)
+        setTimeout(() => {
+            window.open(`https://wa.me/${waPhone}?text=${waText}`, '_blank');
+
+            // Show success
+            feedback.textContent = '✅ Réservation envoyée ! Nous vous confirmerons très bientôt.';
+            feedback.className   = 'res-feedback success';
+
+            // Reset form
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-calendar-check"></i> Confirmer ma réservation';
+
+            // Reset min date after reset
+            if (dateInput) {
+                const n   = new Date();
+                const pad = x => String(x).padStart(2, '0');
+                dateInput.min = `${n.getFullYear()}-${pad(n.getMonth()+1)}-${pad(n.getDate())}T${pad(n.getHours())}:${pad(n.getMinutes())}`;
+            }
+        }, 600);
+    });
+}
+
 // Check URL query parameters or hash on page load to focus and glow targeted menu items
+
 window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     

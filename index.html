@@ -387,8 +387,84 @@
 
     </main>
 
+    <!-- Reservation Section -->
+    <section class="reservation-section" id="reservation-section" style="min-height: 100vh;height: auto;display: flex;justify-content: center;align-items: center;">
+        <div class="reservation-inner">
+
+            <!-- Left: decorative copy -->
+            <div class="reservation-copy">
+                <span class="heading-subtitle">Réservation</span>
+                <h2>Réservez votre table</h2>
+                <p>Assurez votre place et profitez d'une expérience culinaire tunisienne inoubliable. Remplissez le formulaire et nous vous confirmerons par téléphone.</p>
+                <ul class="reservation-perks">
+                    <li><i class="fa-solid fa-circle-check"></i> Confirmation rapide par appel</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Aucun acompte requis</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Annulation gratuite 2h avant</li>
+                </ul>
+                <div class="reservation-phone">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <a href="tel:+21650335898">+216 50 335 898</a>
+                </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="reservation-form-wrap">
+                <form class="reservation-form" id="reservation-form" novalidate>
+
+                    <div class="res-row">
+                        <div class="res-field">
+                            <label for="res-name"><i class="fa-solid fa-user"></i> Nom complet</label>
+                            <input type="text" id="res-name" name="name" placeholder="Votre prénom &amp; nom" required>
+                        </div>
+                        <div class="res-field">
+                            <label for="res-phone"><i class="fa-solid fa-phone"></i> Téléphone</label>
+                            <input type="tel" id="res-phone" name="phone" placeholder="+216 XX XXX XXX" required>
+                        </div>
+                    </div>
+
+                    <div class="res-row">
+                        <div class="res-field">
+                            <label for="res-date"><i class="fa-solid fa-calendar-days"></i> Date &amp; heure</label>
+                            <input type="datetime-local" id="res-date" name="date" required>
+                        </div>
+                        <div class="res-field">
+                            <label for="res-guests"><i class="fa-solid fa-users"></i> Nombre de personnes</label>
+                            <select id="res-guests" name="guests" required>
+                                <option value="" disabled selected>Choisir…</option>
+                                <option value="1">1 personne</option>
+                                <option value="2">2 personnes</option>
+                                <option value="3">3 personnes</option>
+                                <option value="4">4 personnes</option>
+                                <option value="5">5 personnes</option>
+                                <option value="6">6 personnes</option>
+                                <option value="7">7 personnes</option>
+                                <option value="8">8 personnes</option>
+                                <option value="9+">9+ personnes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="res-field res-field-full">
+                        <label for="res-message"><i class="fa-solid fa-comment-dots"></i> Message spécial <span class="res-optional">(optionnel)</span></label>
+                        <textarea id="res-message" name="message" rows="3" placeholder="Allergies, occasion spéciale, préférence de table…"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary res-submit" id="res-submit-btn">
+                        <i class="fa-solid fa-calendar-check"></i> Confirmer ma réservation
+                    </button>
+
+                    <!-- Success / error feedback -->
+                    <div class="res-feedback" id="res-feedback" aria-live="polite"></div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer>
+
+    <footer style="border : none;">
         <div class="footer-container">
             <!-- Col 1 -->
             <div class="footer-col" id="footer-brand">
