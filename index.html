@@ -88,9 +88,9 @@
 
 
         <!-- Featured Plates Section -->
-        <section class="section section-alt" id="featured-plates-section">
+        <section class="section section-alt" id="featured-plates-section" style="margin-top: 8rem;padding-top: 0;padding-bottom: 0;">
             <div class="section">
-                <div class="heading-container">
+                <div class="heading-container" >
                     <span class="heading-subtitle">Le choix du chef</span>
                     <h2>Nos Plats Signature</h2>
                     <div class="margoum-divider"></div>
@@ -136,7 +136,7 @@
                     <!-- Plate 3: Ojja -->
                     <a class="plate-card-tr" id="plate-ojja" href="menu.html?ssde=ge84wf6s5g4625w.f%3Ffew">
                         <div class="plate-image-tr" style="text-align: center;">
-                            <img src="assets/dish_ojja.webp" style="width: 17.5vw" alt="Ojja tunisienne aux oeufs et merguez">
+                            <img src="assets/dish_ojja.webp" class="plate-img-ojja" alt="Ojja tunisienne aux oeufs et merguez">
                         </div>
                         <div class="plate-info">
                             <div class="plate-header">
@@ -162,7 +162,7 @@
         <section class="section" id="about-teaser-section">
             <div class="about-hero">
                 <div class="about-hero-img">
-                    <img src="assets/about_margoum.png" alt="Détail d'un tapis traditionnel Margoum tunisien">
+                    <img src="assets/about_margoum.webp" alt="Détail d'un tapis traditionnel Margoum tunisien">
                 </div>
                 <div class="about-hero-content">
                     <span class="heading-subtitle">Notre Identité</span>
@@ -175,47 +175,135 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="section section-alt" id="testimonials-section">
-            <div class="section">
-                <div class="heading-container">
-                    <span class="heading-subtitle">Vos retours</span>
-                    <h2>Ce que disent nos clients</h2>
-                    <div class="margoum-divider"></div>
+        <section class="reviews-section" id="testimonials-section" style="margin-bottom: 0;">
+            <!-- Header -->
+            <div class="reviews-header">
+                <span class="heading-subtitle">Avis Google</span>
+                <h2>Des clients qui reviennent pour le goût</h2>
+                <div class="reviews-rating-badge">
+                    <span class="reviews-score">4.5</span>
+                    <span class="reviews-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </span>
+                    <span class="reviews-label">Vrais avis</span>
                 </div>
-
-                <div class="features-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="feature-card" style="text-align: left;" id="testi-1">
-                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; margin-bottom: 1rem;">"Une adresse incroyable à La Marsa ! Le riz djerbien est tout simplement le meilleur que j'ai mangé dans un restaurant. Le service est familial et très attentionné. La déco avec les tapis margoum donne un cachet fou."</p>
-                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Mehdi K. (TripAdvisor)</h4>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="feature-card" style="text-align: left;" id="testi-2">
-                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; margin-bottom: 1rem;">"L'ojja est d'une fraîcheur absolue et le brik est croustillant à souhait avec un jaune d'œuf coulant parfait. Coin très chaleureux, propre et prix très corrects pour La Marsa."</p>
-                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Sarah G. (Google Reviews)</h4>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="feature-card" style="text-align: left;" id="testi-3">
-                        <div style="color: var(--color-gold); margin-bottom: 0.8rem;">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <p style="font-style: italic; margin-bottom: 1rem;">"Un petit resto familial sans chichis qui propose de la vraie cuisine tunisienne comme chez la maman. Le thé à la menthe aux pignons offert à la fin est une délicieuse attention !"</p>
-                        <h4 style="font-size: 1rem; font-family: var(--font-body); font-weight: 700;">- Lucas M. (TripAdvisor)</h4>
-                    </div>
-                </div>
+                <div class="margoum-divider"></div>
             </div>
-        </section>
 
-        <section class="section section-alt" id="contact" style="scroll-margin-top: 100px;">
-            <div class="section">
+            <!-- Slider Track -->
+            <div class="reviews-slider-wrapper" id="reviews-slider-wrapper">
+                <div class="reviews-track" id="reviews-track">
+
+                    <!-- Card 1 -->
+                    <div class="review-card" id="review-1">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#C0392B;">S</div>
+                            <div class="review-meta">
+                                <span class="review-name">star</span>
+                                <span class="review-guide">Local Guide &middot; 25 avis &middot; 31 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="review-date">il y a 7 mois</span>
+                        </div>
+                        <p class="review-text">We had dinner in the Ramadan season and it was fabulous. In addition a friendly service, great atmosphere and cats!</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="review-card" id="review-2">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#1A73E8;">C</div>
+                            <div class="review-meta">
+                                <span class="review-name">Caleb</span>
+                                <span class="review-guide">Local Guide &middot; 88 avis &middot; 22 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="review-date">il y a 7 mois</span>
+                        </div>
+                        <p class="review-text">Wonderful traditional Tunisian food. Beautiful restaurant, the owner is great and everyone is very kind!</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="review-card" id="review-3">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#F4A261;">A</div>
+                            <div class="review-meta">
+                                <span class="review-name">Arroudj Melissa</span>
+                                <span class="review-guide">Local Guide &middot; 11 avis &middot; 7 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="review-date">il y a 6 mois</span>
+                        </div>
+                        <p class="review-text">Me and my husband went to this restaurant to have some traditional tunisian food and we were amazed with the taste of the food. Everything was spiced perfectly and the ambiance was great. The waiter was very friendly and we overall strongly recommend this restaurant.</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="review-card" id="review-4">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#2E8B57;">M</div>
+                            <div class="review-meta">
+                                <span class="review-name">Mehdi K.</span>
+                                <span class="review-guide">Local Guide &middot; 42 avis &middot; 18 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="review-date">il y a 5 mois</span>
+                        </div>
+                        <p class="review-text">Une adresse incroyable à La Marsa ! Le riz djerbien est tout simplement le meilleur que j'ai mangé dans un restaurant. Le service est familial et très attentionné. La déco avec les tapis margoum donne un cachet fou.</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="review-card" id="review-5">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#9B59B6;">S</div>
+                            <div class="review-meta">
+                                <span class="review-name">Sarah G.</span>
+                                <span class="review-guide">Local Guide &middot; 67 avis &middot; 34 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="review-date">il y a 4 mois</span>
+                        </div>
+                        <p class="review-text">L'ojja est d'une fraîcheur absolue et le brik est croustillant à souhait avec un jaune d'œuf coulant parfait. Coin très chaleureux, propre et prix très corrects pour La Marsa.</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="review-card" id="review-6">
+                        <div class="review-card-top">
+                            <div class="review-avatar" style="background-color:#E67E22;">L</div>
+                            <div class="review-meta">
+                                <span class="review-name">Lucas M.</span>
+                                <span class="review-guide">Local Guide &middot; 19 avis &middot; 5 photos</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="review-date">il y a 3 mois</span>
+                        </div>
+                        <p class="review-text">Un petit resto familial sans chichis qui propose de la vraie cuisine tunisienne comme chez la maman. Le thé à la menthe aux pignons offert à la fin est une délicieuse attention !</p>
+                        <div class="review-footer"><i class="fa-brands fa-google"></i> Google Review</div>
+                    </div>
+
+                </div><!-- end .reviews-track -->
+            </div><!-- end .reviews-slider-wrapper -->
+
+                        <div class="section">
                 <div class="heading-container">
                     <span class="heading-subtitle">Nous localiser</span>
                     <h2>Contact & Accès</h2>
@@ -292,6 +380,8 @@
                     </div>
                 </div>
             </div>
+
+
         </section>
 
 

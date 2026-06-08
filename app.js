@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init custom hero dishes carousel
     initHeroCarousel();
+
+    // Init Google Reviews infinite slider
+    initReviewsSlider();
 });
 
 /**
@@ -439,6 +442,25 @@ function initHeroCarousel() {
                 }
             }
         }
+    });
+}
+
+/**
+ * Google Reviews Infinite Horizontal Slider
+ * Clones all cards once to create a seamless CSS infinite loop.
+ * Pauses automatically when the user hovers any card.
+ */
+function initReviewsSlider() {
+    const track = document.getElementById('reviews-track');
+    if (!track) return;
+
+    // Clone all original cards and append them so the CSS animation loops seamlessly
+    const originalCards = Array.from(track.children);
+    originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        // Remove ID from clone to avoid duplicate IDs
+        clone.removeAttribute('id');
+        track.appendChild(clone);
     });
 }
 
